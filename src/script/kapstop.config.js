@@ -1,0 +1,1 @@
+var $KT_SERVER_URL = 'local.kapstop.com/';

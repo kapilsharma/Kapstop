@@ -1,0 +1,31 @@
+#kt-container{
+	/*add custom style here for background, although not recommended as it will be hidden by Desktop Background. Will be visible during desktop loading.*/
+	background:rgba(255,255,255,1);
+}
+#kos-layer-desktop{
+	/*add custom style here for background, although not recommended as it will be hidden by Desktop Background. Will be visible during desktop loading.*/
+	background:rgba(200,225,255,1);
+}
+#kos-layer-osmsg{
+	/*It should not have any background*/
+}
+#kos-taskbar-small{
+	background:rgba(200,255,225,0.8);
+	height:24px;
+	width:75%;
+	margin:0 auto;
+	padding:4px 5px;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+	-moz-border-radius-bottomright:5px;
+	-moz-border-radius-bottomleft:5px;
+	-webkit-border-bottom-left-radius:5px;
+}
+/******************************************************************************************************/
+/* Following properties are core system properties. Please do not change any property below this line */
+/* until you get familier with whole code. Medifing below properties may make system unstable.        */
+/******************************************************************************************************/
+.kt-fullscreenlayer{
+	/*Intended for layers, which need to capture whole desktop.*/
+	position:fixed;top:0;bottom:0;left:0;right:0;
+}
