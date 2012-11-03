@@ -9,4 +9,4 @@ Layers are broadly categorized in following groups
 - **Windows:** Z-index range for windows layer is from 300 to 500. All windows should be shown with in that z-index range. KapsOs must provide a logic to maintain that Z-Index.
 - **Model-Window:** ZIndex between 600-650 will be used to show model windows. KapsOs will provide the logic to set that ZIndex for model windows.
 - **Alerts:** Alerts will be shown in ZIndex range 700-750.
-- **OS Messages:** Although not recommended but nay important system message, if needed, may be shown in range 800-850.
+- **OS Messages:** Although not recommended but any important system message, if needed, may be shown in range 800-850. 'Taskbar layer and status bar will appera in that zone with zindex of 825 & 826 respectively.
