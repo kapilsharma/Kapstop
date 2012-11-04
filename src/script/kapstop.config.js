@@ -1,1 +1,1 @@
-var $KT_SERVER_URL = 'local.kapstop.com/';
+var $KT_SERVER_URL = 'http://local.kapstop.com/';

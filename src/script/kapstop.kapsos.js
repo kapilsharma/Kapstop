@@ -16,6 +16,9 @@
 			
 			//Create Taskbar. Change this function to change design of taskbar
 			self.createTaskBar();
+			
+			//get installed apps
+			self.installedApps = self.getInstalledApps();
 		},
 		createOSLayers: function(){
 			var self = this;
@@ -41,6 +44,21 @@
 			var self = this;
 			
 			self.taskbar = $("<div></div>").attr("id","kos-taskbar-small").appendTo(self.layer_osmessage);
+		},
+		getInstalledApps: function(){
+			var self = this;
+			
+			$.getJSON($KT_SERVER_URL+"getapps.php",
+				{
+					t: "insapp"
+				},
+				function(data){
+					console.log(data);
+					$.each(data, function(i,item){
+						console.log(i+",",item);
+					});
+				}
+			);
 		}
 	}
 	$.fn.kapsos = function(options) {
