@@ -8,8 +8,13 @@
 			
 			self.options=$.extend({}, $.fn.kapsos.options, options);
 			
+			self.kosstatus="Initializing KapsOS";
+			
 			//Get a reference of kernel object.
 			self.$kk=getKapsKernel();
+			
+			//Create System Registry
+			self.createRegistry();
 			
 			//Creating layers
 			self.createOSLayers();
@@ -19,6 +24,28 @@
 			
 			//get installed apps
 			self.installedApps = self.getInstalledApps();
+		},
+		setStatus: function(status){
+			var self = this;
+			self.kosstatus=status;
+		},
+		createRegistry: function(){
+			var self = this;
+			
+			self.setStatus("Initializing registry");
+			
+			//Base registry object
+			self.registry = new Object;
+			
+			//Registry entries for Apps
+			self.registry.apps = new Object;
+		},
+		registerApp: function(name,object){
+			if(typeof self.registry.apps.name !== 'object'){
+				self.registry.apps.name = object;
+			}else{
+				return false;
+			}
 		},
 		createOSLayers: function(){
 			var self = this;
@@ -48,7 +75,7 @@
 		getInstalledApps: function(){
 			var self = this;
 			
-			$.getJSON($KT_SERVER_URL+"getapps.php",
+			$.getJSON($KT_WEBAPP_URL+"getapps.php",
 				{
 					t: "insapp"
 				},

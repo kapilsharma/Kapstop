@@ -1,0 +1,3 @@
+[submodule "src/ktserve"]
+	path = src/ktserve
+	url = https://github.com/kapilsharma/ktserve.git
