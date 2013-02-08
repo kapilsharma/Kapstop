@@ -1,3 +1,5 @@
+PS: I'll be working on this again after my another project KAPsCore.
+
 Personal Cloud
 ==============
 Lot of cloud applications are available now a days. However lot of peoples are not comfortable to put their sensitive data on third party cloud.
