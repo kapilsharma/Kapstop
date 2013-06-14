@@ -1,0 +1,64 @@
+<?php
+$login = array(
+	'name'	=> 'login',
+	'id'	=> 'login',
+	'value' => set_value('login'),
+    'autofocus' => 'TRUE',
+    'class' => 'input-large span10',
+);
+if ($login_by_username AND $login_by_email) {
+	$login_label = 'Email or Username';
+    $login_text = 'Please login with your Email/Username and Password.';
+} else if ($login_by_username) {
+	$login_label = 'Username';
+    $login_text = 'Please login with your Username and Password.';
+} else {
+	$login_label = 'Email';
+    $login_text = 'Please login with your Email and Password.';
+}
+$password = array(
+	'name'	=> 'password',
+	'id'	=> 'password',
+	'class' => 'input-large span10',
+);
+$remember = array(
+	'name'	=> 'remember',
+	'id'	=> 'remember',
+	'checked'	=> set_value('remember'),
+);
+$captcha = array(
+	'name'	=> 'captcha',
+	'id'	=> 'captcha',
+	'maxlength'	=> 8,
+);
+?>
+					<div class="alert alert-info">
+						<?PHP echo $login_text; ?>
+					</div>
+					<!--form class="form-horizontal" action="index.html" method="post"-->
+                    <?php echo form_open($this->uri->uri_string(),array('class' => 'form-horizontal')); ?>
+						<fieldset>
+							<div class="input-prepend" title="<?PHP echo $login_label; ?>" data-rel="tooltip">
+								<span class="add-on"><i class="icon-user"></i></span><?php echo form_input($login); ?>
+							</div>
+							<div class="clearfix"></div>
+                            <div class="input-prepend" title="Password" data-rel="tooltip">
+								<span class="add-on"><i class="icon-lock"></i></span><?php echo form_password($password); ?>
+							</div>
+							<div class="clearfix"></div>
+                            <div class="input-prepend">
+							<label class="remember" for="remember"><?php echo form_checkbox($remember); ?>Remember me</label>
+							</div>
+							<div class="clearfix"></div>
+
+							<p class="center span5">
+								<button type="submit" class="btn btn-primary">Login</button>
+							</p>
+                            <p class="center span5">
+                            	<span class="pull-left"><?php echo anchor('kapstop/auth/forgot_password/', 'Forgot password'); ?></span>
+                                <span class="pull-right">
+                                	<?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('kapstop/auth/register/', 'Register'); ?>
+                                </span>
+                            </p>
+						</fieldset>
+					</form>

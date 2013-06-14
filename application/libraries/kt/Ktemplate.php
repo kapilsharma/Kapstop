@@ -1,13 +1,25 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Ktemplate {
-
+	//Used to hold template directory
 	private $template;
+    
+    //Used to hold layout within template
     private $layout;
+    
+    //CodeIgniter instance
     private $CI;
+    
+    //Template data, loaded through config file
     private $templateData;
-    private $positions;
+    
+    //Again template data but overridden by controller. This will be actually passed to views.
     private $viewData;
+    
+    //An array to hold placeholder html
+    private $placeHolder;
+    
+    //CSS files to be included.
     private $css;
 
 	/**
@@ -20,16 +32,34 @@ class Ktemplate {
         //Load config file
         $this->CI->load->config('ktemplate',TRUE);
         
-        $this->setDefaultTemplateData();
-        
         $this->viewData = Array();
         $this->css = Array();
+        $this->placeHolder = Array();
+        
+        $this->setDefaultTemplateData();
+        
+        $this->setEmptyPlaceHolders();
     }
     
     public function render(){
     	$this->addTemplateData();
         $this->addTemplateCSS();
+        $this->viewData['placeHolder'] = $this->placeHolder;
     	$this->CI->load->view($this->layout, $this->viewData);
+    }
+    
+    public function renderPlaceHolder($placeHolder, $view) {
+    	$viewPath = $this->getTemplate().'/view/'.$view.'.ktv';
+        $this->addTemplateData();
+    	$this->placeHolder[$placeHolder] = $this->CI->load->view($viewPath,$this->viewData,TRUE);
+    }
+    
+    private function setEmptyPlaceHolders() {
+    	$configPlaceHolders = $this->CI->config->item('ktemplate_default_placeholder','ktemplate');
+        
+        foreach($configPlaceHolders as $value) {
+        	$this->placeHolder[$value] = "";
+        }
     }
     
     private function addTemplateCSS() {

@@ -1,0 +1,81 @@
+<?php
+if ($use_username) {
+	$username = array(
+		'name'	=> 'username',
+		'id'	=> 'username',
+		'value' => set_value('username'),
+		'maxlength'	=> $this->config->item('username_max_length', 'tank_auth'),
+		'size'	=> 30,
+    	'class' => 'input-large span10',
+	);
+}
+$email = array(
+	'name'	=> 'email',
+	'id'	=> 'email',
+	'value'	=> set_value('email'),
+	'maxlength'	=> 80,
+	'size'	=> 30,
+    'class' => 'input-large span10',
+);
+$password = array(
+	'name'	=> 'password',
+	'id'	=> 'password',
+	'value' => set_value('password'),
+	'maxlength'	=> $this->config->item('password_max_length', 'tank_auth'),
+	'size'	=> 30,
+    'class' => 'input-large span10',
+);
+$confirm_password = array(
+	'name'	=> 'confirm_password',
+	'id'	=> 'confirm_password',
+	'value' => set_value('confirm_password'),
+	'maxlength'	=> $this->config->item('password_max_length', 'tank_auth'),
+	'size'	=> 30,
+    'class' => 'input-large span10',
+);
+$captcha = array(
+	'name'	=> 'captcha',
+	'id'	=> 'captcha',
+	'maxlength'	=> 8,
+);
+$submit = array(
+    'name'	=> 'register',
+	'class' => 'btn btn-primary',
+);
+if(!isset($register_text)) {
+	$register_text = "Registration: All fields are compulsory";
+}
+?>
+                    <div class="alert alert-info">
+						<?PHP echo $register_text; ?>
+					</div>
+					<!--form class="form-horizontal" action="index.html" method="post"-->
+                    <?php echo form_open($this->uri->uri_string(),array('class' => 'form-horizontal')); ?>
+                    	<fieldset>
+                        	<?php if ($use_username): ?>
+                        	<div class="span9 center">
+                            	<span class="pull-left"><?php echo form_label('Username', $username['id']); ?></span>
+                                <span class="pull-right"><?php echo form_input($username); ?></span>
+                            </div>
+							<div class="clearfix"></div>
+                            <?php endif; ?>
+                            <div class="span9 center">
+                            	<span class="pull-left"><?php echo form_label('Email Address', $email['id']); ?></span>
+                                <span class="pull-right"><?php echo form_input($email); ?></span>
+                            </div>
+							<div class="clearfix"></div>
+                            <div class="span9 center">
+                            	<span class="pull-left"><?php echo form_label('Password', $password['id']); ?></span>
+                                <span class="pull-right"><?php echo form_password($password); ?></span>
+                            </div>
+							<div class="clearfix"></div>
+                            <div class="span9 center">
+                            	<span class="pull-left"><?php echo form_label('Confirm Password', $confirm_password['id']); ?></span>
+                                <span class="pull-right"><?php echo form_password($confirm_password); ?></span>
+                            </div>
+							<div class="clearfix"></div>
+                            <p class="center span5">
+								<?php echo form_submit($submit, 'Register'); ?>
+							</p>
+                        </fieldset>
+					</form>

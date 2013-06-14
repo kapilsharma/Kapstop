@@ -46,6 +46,10 @@ class KT_Controller extends CI_Controller {
     	$this->ktemplate->addCSS($css);
     }
     
+    protected function renderPlaceHolder($placeHolder, $view) {
+    	$this->ktemplate->renderPlaceHolder($placeHolder, $view);
+    }
+    
     protected function render(){
     	$this->ktemplate->render();
     }

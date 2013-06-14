@@ -19,6 +19,6 @@ $config['ktemplate_default_template_data'] = Array(
 												'title' => 'Welcome to KAPsTop'
                                             );
 
-$config['ktemplate_default_positions'] = Array('content');
+$config['ktemplate_default_placeholder'] = Array('content');
 
 $config['ktemplate_css_directory'] = 'styles';

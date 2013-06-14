@@ -100,7 +100,7 @@ class Auth extends KT_Controller
 				}
 			}
             
-            //ToDo: Show Template.
+            //Removing default tankauth view in favour of KTemplate and default template.
 			//$this->load->view('auth/login_form', $data);
             
             //Managing template
@@ -111,6 +111,8 @@ class Auth extends KT_Controller
             
             $this->setTemplateData($data);
             $this->setTemplateData('title','Set From controller');
+            
+            $this->renderPlaceHolder('content','auth/login');
             
             $this->addCSS(Array('bootstrap-responsive','bootstrap-cerulean','charisma-app'));
             
@@ -137,15 +139,13 @@ class Auth extends KT_Controller
 	 */
 	function register()
 	{
-		if ($this->tank_auth->is_logged_in()) {									// logged in
+		if ($this->tank_auth->is_logged_in()) {
+        	//ToDo: User Already loggedin. Redirect to dashboard
 			redirect('');
-
 		} elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
 			redirect('/auth/send_again/');
-
 		} elseif (!$this->config->item('allow_registration', 'tank_auth')) {	// registration is off
 			$this->_show_message($this->lang->line('auth_message_registration_disabled'));
-
 		} else {
 			$use_username = $this->config->item('use_username', 'tank_auth');
 			if ($use_username) {
@@ -210,7 +210,24 @@ class Auth extends KT_Controller
 			$data['use_username'] = $use_username;
 			$data['captcha_registration'] = $captcha_registration;
 			$data['use_recaptcha'] = $use_recaptcha;
-			$this->load->view('auth/register_form', $data);
+            
+            //Removing default tankauth view in favour of KTemplate and default template.
+			//$this->load->view('auth/login_form', $data);
+            
+            //Managing template
+            //Setting template. Ideally not needed as we are setting default template.
+            $this->setTemplate('ktdefault');
+            //Set Layout
+            $this->setLayout('login');
+            
+            $this->setTemplateData($data);
+            $this->setTemplateData('title','Set From controller');
+            
+            $this->renderPlaceHolder('content','auth/register');
+            
+            $this->addCSS(Array('bootstrap-responsive','bootstrap-cerulean','charisma-app'));
+            
+            $this->render();
 		}
 	}
 
