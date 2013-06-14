@@ -49,6 +49,19 @@ if(!isset($register_text)) {
                     <div class="alert alert-info">
 						<?PHP echo $register_text; ?>
 					</div>
+                    <?PHP
+                    if(isset($errors[$username['name']]) or 
+                    		isset($errors[$email['name']]) or 
+                            isset($errors[$password['name']])):
+                    ?>
+                    <div class="alert alert-error">
+                    	<?PHP echo (isset($errors[$username['name']])?$errors[$username['name']].'<br/>':'') ?>
+                        <?PHP echo (isset($errors[$email['name']])?$errors[$email['name']].'<br/>':'') ?>
+                        <?PHP echo (isset($errors[$password['name']])?$errors[$password['name']].'<br/>':'') ?>
+                    </div>
+                    <?PHP
+                    endif;
+                    ?>
 					<!--form class="form-horizontal" action="index.html" method="post"-->
                     <?php echo form_open($this->uri->uri_string(),array('class' => 'form-horizontal')); ?>
                     	<fieldset>
