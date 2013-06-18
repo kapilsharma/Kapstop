@@ -39,6 +39,8 @@
 */
 
 $route['login'] = 'kapstop/auth/login';
+$route['register'] = 'kapstop/auth/register';
+$route['forgot'] = 'kapstop/auth/forgot_password';
 $route['default_controller'] = "kapstop/auth";
 $route['404_override'] = '';
 
