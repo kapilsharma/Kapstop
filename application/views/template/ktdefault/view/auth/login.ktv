@@ -55,9 +55,9 @@ $captcha = array(
 								<button type="submit" class="btn btn-primary">Login</button>
 							</p>
                             <p class="center span5">
-                            	<span class="pull-left"><?php echo anchor('kapstop/auth/forgot_password/', 'Forgot password'); ?></span>
+                            	<span class="pull-left"><?php echo anchor('forgot/', 'Forgot password'); ?></span>
                                 <span class="pull-right">
-                                	<?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('kapstop/auth/register/', 'Register'); ?>
+                                	<?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('register/', 'Register'); ?>
                                 </span>
                             </p>
 						</fieldset>
