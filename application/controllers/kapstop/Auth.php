@@ -5,8 +5,7 @@
  * All logic is same as 'Tank Auth', just Tank Auth views are converted into KTemplate
  * views and called through KTemplate.
  */
-class Auth extends KT_Controller
-{
+class Auth extends KT_Controller {
 	function __construct()
 	{
 		parent::__construct();
@@ -184,6 +183,7 @@ class Auth extends KT_Controller
 
 						unset($data['password']); // Clear password (just for any case)
 
+                        //TODO: Design message page
 						$this->_show_message($this->lang->line('auth_message_registration_completed_1'));
 
 					} else {
@@ -193,6 +193,7 @@ class Auth extends KT_Controller
 						}
 						unset($data['password']); // Clear password (just for any case)
 
+                        //TODO: Design message page
 						$this->_show_message($this->lang->line('auth_message_registration_completed_2').' '.anchor('/auth/login/', 'Login'));
 					}
 				} else {
@@ -500,6 +501,7 @@ class Auth extends KT_Controller
 	function _show_message($message)
 	{
 		$this->session->set_flashdata('message', $message);
+        //TODO: Design and show message page.
 		redirect('/auth/');
 	}
 
@@ -620,5 +622,5 @@ class Auth extends KT_Controller
 
 }
 
-/* End of file auth.php */
-/* Location: ./application/controllers/auth.php */
+/* End of file kapstop/auth.php */
+/* Location: ./application/controllers/kapstop/auth.php */
